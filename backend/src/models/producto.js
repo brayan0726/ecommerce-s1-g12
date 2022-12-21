@@ -12,19 +12,6 @@ module.exports = sequelize => {
       comment: null,
       field: "ID_PRODUCTO"
     },
-    ID_CLIENTE: {
-      type: DataTypes.INTEGER(11),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "ID_CLIENTE",
-      references: {
-        key: "ID_CLIENTE",
-        model: "cliente_model"
-      }
-    },
     NOMBRE_PRODUCTO: {
       type: DataTypes.STRING(100),
       allowNull: false,
@@ -51,6 +38,15 @@ module.exports = sequelize => {
       autoIncrement: false,
       comment: null,
       field: "CANTIDAD"
+    },
+    IMAGEN: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "IMAGEN"
     },
     EXISTENCIA: {
       type: DataTypes.STRING(15),
@@ -101,12 +97,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "producto",
     comment: "",
-    indexes: [{
-      name: "CLIENTES",
-      unique: false,
-      type: "BTREE",
-      fields: ["ID_CLIENTE"]
-    }]
+    indexes: []
   };
   const ProductoModel = sequelize.define("producto_model", attributes, options);
   return ProductoModel;
